@@ -1,1 +1,62 @@
+//customer.h file
+#include<iostream>
+#include<vector>
+using namespace std;
+#include<string>
+template<class T>
+class Customer 
+{
+    private:
+        T name;
+    public:
+        Customer (){}
+        Customer(T name) {
+            this->name=name;
+            //this->address=address;
+        }
+        T getName(){
+            return this->name;
+
+        }
+};
+
+//order.h file
+template<class U>
+class Order 
+{
+    private:
+        std::vector<Customer<U>> customers; // vector of customers
+    public:
+        Order(){}
+        void placeOrder(Customer<U> customer){
+           
+            customers.push_back(customer);   
+        }
+        void displayOrderDetails(){
+         for (auto& customer : customers) {
+            cout << "Customer: " << customer.getName() << endl;
+        }
+        }
+};
+//main.cpp file
+
+int main() {
+    // Create customer
+    // Create customers
+    Customer<string> customer1("Ateeq Ahmed");
+    Customer<string> customer2("Muhammad Ali");
+
+    // Create an order
+    Order<string> order;
+
+    // Place orders
+    order.placeOrder(customer1);
+    order.placeOrder(customer2);
+
+    // Display order details
+    order.displayOrderDetails();
+    return 0;
+}
+
+
 
